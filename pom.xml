@@ -24,10 +24,10 @@
         <requirejs>
             {
                 "paths": {
-                    "datatable-fixedcolumns": "datatable-fixedcolumns"
+                    "datatable-fixedcolumns": "js/dataTables.fixedColumns"
                 },
                 "shim": {
-                    "datatable-fixedcolumns": ["jquery,datables"]
+                    "datatable-fixedcolumns": ["jquery", "datatables"]
                 }
             }
         </requirejs>
