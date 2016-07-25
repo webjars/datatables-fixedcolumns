@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>datatables-fixedcolumns</artifactId>
-    <version>3.2.2-SNAPSHOT</version>
+    <version>3.2.2</version>
     <name>datatables FixedColumns</name>
     <description>WebJar for datatables FixedColumns</description>
     <url>http://webjars.org</url>
@@ -52,7 +52,7 @@
         <url>http://github.com/webjars/datatables-fixedcolumns</url>
         <connection>scm:git:https://github.com/webjars/datatables-fixedcolumns.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/datatables-fixedcolumns.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>datatables-fixedcolumns-3.2.2</tag>
     </scm>
 
     <dependencies>
