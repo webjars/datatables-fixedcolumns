@@ -11,16 +11,15 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>datatables-fixedcolumns</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.2.2-SNAPSHOT</version>
     <name>datatables FixedColumns</name>
     <description>WebJar for datatables FixedColumns</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>3.1.0</upstream.version>
         <upstream.url>https://github.com/DataTables/FixedColumns/archive</upstream.url>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
                 "paths": {
@@ -72,6 +71,20 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.jamesward</groupId>
+                <artifactId>unsnapshot-maven-plugin</artifactId>
+                <version>0.1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unsnapshot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
                 <version>1.0-beta-5</version>
@@ -83,7 +96,7 @@
                         </goals>
                         <configuration>
                             <url>${upstream.url}</url>
-                            <fromFile>${upstream.version}.zip</fromFile>
+                            <fromFile>${version.unsnapshot}.zip</fromFile>
                             <toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
                         </configuration>
                     </execution>
@@ -103,7 +116,7 @@
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/FixedColumns-${upstream.version}">
+                                    <fileset dir="${project.build.directory}/FixedColumns-${version.unsnapshot}">
                                         <include name="css/*" />
                                         <include name="js/*" />
                                     </fileset>
